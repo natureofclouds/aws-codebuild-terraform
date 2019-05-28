@@ -1,7 +1,7 @@
 # Create and configure VPC peering
-data "aws_vpc" "vpc_peer" { tags { Name = "natureofclouds-dev-vpc" }}
-data "aws_route_table" "vpc_peer_public" { tags { Name = "natureofclouds-dev-public-rtb" }}
-data "aws_route_table" "vpc_peer_private" { tags { Name = "natureofclouds-dev-private-rtb" }}
+data "aws_vpc" "vpc_peer" { tags { Name = "natureofclouds-core-vpc" }}
+data "aws_route_table" "vpc_peer_public" { tags { Name = "natureofclouds-core-public-rtb" }}
+data "aws_route_table" "vpc_peer_private" { tags { Name = "natureofclouds-core-private-rtb" }}
 
 resource "aws_vpc_peering_connection" "peer" {
   peer_vpc_id   = "${data.aws_vpc.vpc_peer.id}"
