@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - cd $env/$component
+      - ../../bin/terraform init -input=false
+      - ../../bin/terraform $cmd $options -var "env=$env component=$component" > terraform-$cmd.log
+    finally:
+      - expand terraform-$cmd.log
+      - aws s3 cp terraform-$cmd.log s3://natureofclouds-terraform/$env/$component/terraform-$cmd.log
+cache:
+  paths:
+    - /root/bin/*
