@@ -1,0 +1,1 @@
+# Define security for Core VPC
