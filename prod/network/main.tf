@@ -5,14 +5,13 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "natureofclouds-terraform"
-    key    = "${var.env}/${var.component}/terraform.tfstate"
+    key    = "prod/network/terraform.tfstate"
     region = "us-east-1"
   }
 }
 
 # external parameter from CodeBuild via TF_VAR_env
 variable "env" {} # Name of new environment/vpc
-variable "component" {} # Name of component directory
 
 data "aws_vpcs" "vpcs" {}  # Count the number of existing vpcs to calcuate next free /20 cidr_block
 locals {

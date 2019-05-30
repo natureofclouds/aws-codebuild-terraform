@@ -5,7 +5,7 @@ phases:
     commands:
       - cd $env/$component
       - ../../bin/terraform init -input=false
-      - ../../bin/terraform $cmd $options -var "env=$env component=$component" > terraform-$cmd.log
+      - ../../bin/terraform $cmd $options -var "env=$env" > terraform-$cmd.log
     finally:
       - expand terraform-$cmd.log
       - aws s3 cp terraform-$cmd.log s3://natureofclouds-terraform/$env/$component/terraform-$cmd.log

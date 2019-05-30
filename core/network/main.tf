@@ -14,7 +14,6 @@ terraform {
 
 # external parameter from CodeBuild via TF_VAR_env
 variable "env" {} # Name of new environment/vpc
-variable "component" {} # Name of component directory
 
 data "aws_vpcs" "vpcs" {}  # Count the number of existing vpcs to calcuate next free /20 cidr_block
 locals {
