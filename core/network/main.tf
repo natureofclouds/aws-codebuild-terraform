@@ -2,10 +2,12 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# Would like to use variables in the key but the terraform.backend configuration cannot contain interpolations 
+# Alternative would be generate the Terraform code via Jinja templates perhaps...
 terraform {
   backend "s3" {
     bucket = "natureofclouds-terraform"
-    key    = "${var.env}/${var.component}/terraform.tfstate"
+    key    = "core/network/terraform.tfstate"
     region = "us-east-1"
   }
 }
