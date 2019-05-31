@@ -14,5 +14,3 @@ terraform {
 
 # external parameter from CodeBuild via TF_VAR_env
 variable "env" {} # Name of new environment/vpc
-
-
